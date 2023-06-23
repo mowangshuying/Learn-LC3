@@ -1,0 +1,3 @@
+https://juejin.cn/post/7106451372832194567#heading-23
+
+LC-3仿真器安装和使用：https://blog.csdn.net/pigpigpig64/article/details/116905991
