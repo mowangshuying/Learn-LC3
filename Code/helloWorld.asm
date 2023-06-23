@@ -1,11 +1,11 @@
-;LC3 Hello World				;Ê¹ÓÃ ";"×÷Îª×¢ÊÍ
+;LC3 Hello World				;ä½¿ç”¨ ";"ä½œä¸ºæ³¨é‡Š
 ;mowangshuying
 
-.ORIG x3000					;¶¨ÒåÁËµÚÒ»¸öÖ¸ÁîµÄµØÖ·
-	LEA R0, HW				;½«×Ö·û´®´æ´¢µ½R0¼Ä´æÆ÷ÖÐ
-	PUTS					;Êä³öR0ÖÐµÄ×Ö·û´®
-	HALT					;³ÌÐòÖÕÖ¹
+.ORIG x3000					;å®šä¹‰äº†ç¬¬ä¸€ä¸ªæŒ‡ä»¤çš„åœ°å€
+	LEA R0, HW				;å°†å­—ç¬¦ä¸²å­˜å‚¨åˆ°R0å¯„å­˜å™¨ä¸­
+	PUTS					;è¾“å‡ºR0ä¸­çš„å­—ç¬¦ä¸²
+	HALT					;ç¨‹åºç»ˆæ­¢
 
-						;Êý¾Ý¶¨ÒåÇøÓò					
-	HW .STRINGZ "Hello, world!"		; .STRINGZ¶¨Òå×Ö·û´®£¬HW´ú±í±êºÅ¡£
-.END						;Ô´´úÂë½áÎ²²¿·Ö
+						;æ•°æ®å®šä¹‰åŒºåŸŸ					
+	HW .STRINGZ "Hello, world!"		; .STRINGZå®šä¹‰å­—ç¬¦ä¸²ï¼ŒHWä»£è¡¨æ ‡å·ã€‚
+.END	

@@ -25,6 +25,12 @@
 
 编写LC3仿真器，需要先学习LC3汇编。取自github项目：https://github.com/justinmeiners/lc3-vm.git，对应本文件夹下LC3-Vm中的内容。
 
+### 2.1.1 LC3-rogue
+
+LC3仿真器LC3的示例代码。同作者(lc3-vm)
+
+[lc3-rogue/rogue.asm at master · justinmeiners/lc3-rogue (github.com)](https://github.com/justinmeiners/lc3-rogue/blob/master/rogue.asm)
+
 ## 2.2 其他
 
 ...
