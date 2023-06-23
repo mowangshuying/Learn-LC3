@@ -18,35 +18,35 @@ LC-3编辑器和模拟器在课程中使用定义的ISA创建程序，这些程�
 
 https://highered.mheducation.com/sites/0072467509/student_view0/lc-3_simulator.html
 
-![image-20230608075053683](E:\CodeLibraries\lc3-vm\lz3\img\image-20230608075053683.png)
+![image-20230608075053683](./img/image-20230608075053683.png)
 
-![image-20230608075110516](E:\CodeLibraries\lc3-vm\lz3\img\image-20230608075110516.png)
+![image-20230608075110516](./img/image-20230608075110516.png)
 
-![image-20230608075124770](E:\CodeLibraries\lc3-vm\lz3\img\image-20230608075124770.png)
+![image-20230608075124770](./img/image-20230608075124770.png)
 
 ## 安装
 
 双击下载到的LC301.exe
 
-![image-20230608075124770](E:\CodeLibraries\lc3-vm\lz3\img\image-20230608075124770.png)
+![image-20230608075124770](./img/image-20230608075124770.png)
 
 点击Unzip
 
-![image-20230608075156304](E:\CodeLibraries\lc3-vm\lz3\img\image-20230608075156304.png)
+![image-20230608075156304](./img/image-20230608075156304.png)
 
 查看c:\lc3目录下是否有以下文件，有的话就是安装成功。
 
-![image-20230608075256096](E:\CodeLibraries\lc3-vm\lz3\img\image-20230608075256096.png)
+![image-20230608075256096](./img/image-20230608075256096.png)
 
 右键发送到桌面快捷方式
 
-![image-20230608075734821](E:\CodeLibraries\lc3-vm\lz3\img\image-20230608075734821.png)
+![image-20230608075734821](./img/image-20230608075734821.png)
 
-![image-20230608075756308](E:\CodeLibraries\lc3-vm\lz3\img\image-20230608075756308.png)
+![image-20230608075756308](./img/image-20230608075756308.png)
 
 桌面图标标识
 
-![image-20230608075837903](E:\CodeLibraries\lc3-vm\lz3\img\image-20230608075837903.png)
+![image-20230608075837903](./img/image-20230608075837903.png)
 
 ## LC3 指令集架构（ISA）参考手册
 
