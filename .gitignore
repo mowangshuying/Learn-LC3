@@ -17,3 +17,7 @@ lc3-alt
 *.ilk
 *.db
 *.log
+
+Code/*.bin
+Code/*.lst
+Code/*.hex

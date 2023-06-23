@@ -26,9 +26,9 @@
     STI R3, DDR     	;R3的值送入DDR中
 	
 	;数据申明
-	Num0	.FILL 0x30
-	DSR		.FILL 0xFE04
-	DDR		.FILL 0xFE06
+	Num0	.FILL 0x30		;assic码 0 对应的16进制为 0x30, 
+	DSR		.FILL 0xFE04	;最高位为1表示可以向屏幕输出一个字符
+	DDR		.FILL 0xFE06	;向屏幕输出字符的ascii码存在其低8位
     
 	HALT					;程序终止
 .END		
