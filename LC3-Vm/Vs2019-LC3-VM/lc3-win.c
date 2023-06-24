@@ -101,6 +101,7 @@ void handle_interrupt(int signal)
 	printf("\n");
 	exit(-2);
 }
+
 uint16_t sign_extend(uint16_t x, int bit_count)
 {
 	if ((x >> (bit_count - 1)) & 1) {
@@ -203,14 +204,14 @@ int main(int argc, const char* argv[])
 	/* set the PC to starting position */
 	/* 0x3000 is the default */
 	enum { PC_START = 0x3000 };
-	reg[R_PC] = PC_START;
+	reg[R_PC] = PC_START;	// 确定 PC 寄存器的地址
 
 	int running = 1;
 	while (running)
 	{
 		/* FETCH */
 		uint16_t instr = mem_read(reg[R_PC]++);
-		uint16_t op = instr >> 12;
+		uint16_t op = instr >> 12;// 右移动12位，确定命令的
 
 		switch (op)
 		{
@@ -267,6 +268,7 @@ int main(int argc, const char* argv[])
 		break;
 		case OP_BR:
 		{
+			//										 b0001 1111 1111
 			uint16_t pc_offset = sign_extend(instr & 0x1FF, 9);
 			uint16_t cond_flag = (instr >> 9) & 0x7;
 			if (cond_flag & reg[R_COND])
