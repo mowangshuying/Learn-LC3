@@ -21,3 +21,4 @@ lc3-alt
 Code/*.bin
 Code/*.lst
 Code/*.hex
+/LC3-Vm/Vs2019-LC3-VM/.vs/
