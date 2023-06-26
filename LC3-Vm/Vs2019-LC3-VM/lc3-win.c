@@ -217,17 +217,10 @@ int main(int argc, const char* argv[])
 		{
 		case OP_ADD:
 		{
-			/*
-			* -------------------------------------------------------
-			* |	opcode	|	DR	|	SR1	|	|	Mode	|	IMM5	|
-			* -------------------------------------------------------
-			* |	0001	|	000	|	000	|	|	1		|	00000	|
-			* -------------------------------------------------------
-			*/
 			/* destination register (DR) */
-			uint16_t r0 = (instr >> 9) & 0x7;
+			uint16_t r0 = (instr >> 9) & 0x7; // Ä¿±ê¼Ä´æÆ÷
 			/* first operand (SR1) */
-			uint16_t r1 = (instr >> 6) & 0x7;
+			uint16_t r1 = (instr >> 6) & 0x7; // Ô´¼Ä´æÆ÷
 			/* whether we are in immediate mode */
 			uint16_t imm_flag = (instr >> 5) & 0x1;
 
