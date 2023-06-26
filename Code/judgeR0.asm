@@ -3,20 +3,20 @@
 
 ;mowangshuying
 
-.ORIG x3000					;瀹氫箟浜嗙涓�涓寚浠ょ殑鍦板潃
+.ORIG x3000					;定义了第一个指令的地址
    
 	AND R1, R1, 0			;
 	ADD R1, R1, R0			;
 
-	BRzp 2 
-	BRn  4
+	BRzp 1
+	BRn  3
 
 	AND R1, R1, 0
 	ADD R1, R1, 1
-	BRnzp 2
+	BRnzp 1
 
 	AND R1, R1, 0
 
-	HALT					;绋嬪簭缁堟
-	;鏁版嵁鐢虫槑 
+	HALT					;程序终止
+	;数据申明 
 .END	
