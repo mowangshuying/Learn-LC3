@@ -266,7 +266,7 @@ int main(int argc, const char* argv[])
 			update_flags(r0);
 		}
 		break;
-		case OP_BR:
+		case OP_BR:// br brz brp brn
 		{
 			//										 b0001 1111 1111
 			uint16_t pc_offset = sign_extend(instr & 0x1FF, 9);
@@ -280,8 +280,8 @@ int main(int argc, const char* argv[])
 		case OP_JMP:
 		{
 			/* Also handles RET */
-			uint16_t r1 = (instr >> 6) & 0x7;
-			reg[R_PC] = reg[r1];
+			uint16_t r1 = (instr >> 6) & 0x7; // base register
+			reg[R_PC] = reg[r1];			  // 根据寄存器跳转地址
 		}
 		break;
 		case OP_JSR:
