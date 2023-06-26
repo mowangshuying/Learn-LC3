@@ -9,9 +9,10 @@
 	AND R3, R3, #0			;R3寄存器赋值为零
 	LDR R3，R1, #2			;取出MyArray1[2]的值到R3寄存器中
 	
+	HALT					;程序终止
+	
 	;数据申明
 	MyArray1	.FILL #12	; MyArray1[0]
 				.FILL #22	; MyArray1[1]
 				.FILL #-7	; MyArray1[2]
-	HALT					;程序终止
 .END		

@@ -1,4 +1,4 @@
-;LC3 汇编代码模板 
+;LC3 程序终止
 ;mowangshuying
 
 .ORIG x3000					;定义了第一个指令的地址
