@@ -113,21 +113,29 @@ uint16_t swap16(uint16_t x)
 {
 	return (x << 8) | (x >> 8);
 }
+
+/*更新条件寄存器值*/
 void update_flags(uint16_t r)
 {
+	// n z p
+	// 1 0 0 负数
+	// 0 1 0 零
+	// 0 0 1 正数
 	if (reg[r] == 0)
 	{
-		reg[R_COND] = FL_ZRO;
+		reg[R_COND] = FL_ZRO; //10
 	}
 	else if (reg[r] >> 15) /* a 1 in the left-most bit indicates negative */
 	{
-		reg[R_COND] = FL_NEG;
+		reg[R_COND] = FL_NEG;//100
 	}
 	else
 	{
-		reg[R_COND] = FL_POS;
+		reg[R_COND] = FL_POS; // 1
 	}
 }
+
+/*读取img文件*/
 void read_image_file(FILE* file)
 {
 	/* the origin tells us where in memory to place the image */
@@ -155,11 +163,14 @@ int read_image(const char* image_path)
 	fclose(file);
 	return 1;
 }
+
+/* 地址写入：向地址给定地址:address中写入val */
 void mem_write(uint16_t address, uint16_t val)
 {
 	memory[address] = val;
 }
 
+/* 地址读取： 给定地址address读取val */
 uint16_t mem_read(uint16_t address)
 {
 	if (address == MR_KBSR)
@@ -180,6 +191,7 @@ uint16_t mem_read(uint16_t address)
 
 int main(int argc, const char* argv[])
 {
+
 	if (argc < 2)
 	{
 		/* show usage string */
@@ -188,7 +200,7 @@ int main(int argc, const char* argv[])
 	}
 
 	for (int j = 1; j < argc; ++j)
-	{
+	{/*读取镜像信息*/
 		if (!read_image(argv[j]))
 		{
 			printf("failed to load image: %s\n", argv[j]);
@@ -210,7 +222,7 @@ int main(int argc, const char* argv[])
 	while (running)
 	{
 		/* FETCH */
-		uint16_t instr = mem_read(reg[R_PC]++);
+		uint16_t instr = mem_read(reg[R_PC]++); // 读取当前指令并将R_PC的内容+1，指向下一条命令执行位置
 		uint16_t op = instr >> 12;// 右移动12位，确定命令的
 
 		switch (op)
@@ -221,21 +233,23 @@ int main(int argc, const char* argv[])
 			uint16_t r0 = (instr >> 9) & 0x7; // 目标寄存器
 			/* first operand (SR1) */
 			uint16_t r1 = (instr >> 6) & 0x7; // 源寄存器
+
 			/* whether we are in immediate mode */
+			//获取 “立即数”标志
 			uint16_t imm_flag = (instr >> 5) & 0x1;
 
 			if (imm_flag)
 			{
-				uint16_t imm5 = sign_extend(instr & 0x1F, 5);
-				reg[r0] = reg[r1] + imm5;
+				uint16_t imm5 = sign_extend(instr & 0x1F, 5);/*5位数扩展为16位数*/
+				reg[r0] = reg[r1] + imm5;					 /*第一个寄存器的值+立即数(imm5)，结果存入R0寄存器中*/
 			}
 			else
 			{
-				uint16_t r2 = instr & 0x7;
-				reg[r0] = reg[r1] + reg[r2];
+				uint16_t r2 = instr & 0x7; /*获取到第二个寄存器位置*/
+				reg[r0] = reg[r1] + reg[r2];/*第一个寄存器的值+第二个寄存器的值，结果存入r0寄存器中*/
 			}
 
-			update_flags(r0);
+			update_flags(r0);/*更新符号信息*/
 		}
 		break;
 		case OP_AND:
@@ -254,7 +268,7 @@ int main(int argc, const char* argv[])
 				uint16_t r2 = instr & 0x7;
 				reg[r0] = reg[r1] & reg[r2];
 			}
-			update_flags(r0);
+			update_flags(r0);/*更新符号信息*/
 		}
 		break;
 		case OP_NOT:
@@ -263,7 +277,7 @@ int main(int argc, const char* argv[])
 			uint16_t r1 = (instr >> 6) & 0x7;
 
 			reg[r0] = ~reg[r1];
-			update_flags(r0);
+			update_flags(r0);/*更新符号信息*/
 		}
 		break;
 		case OP_BR:// br brz brp brn
@@ -273,7 +287,7 @@ int main(int argc, const char* argv[])
 			uint16_t cond_flag = (instr >> 9) & 0x7;
 			if (cond_flag & reg[R_COND])
 			{
-				reg[R_PC] += pc_offset;
+				reg[R_PC] += pc_offset;// pc寄存器的值 + 偏移地址
 			}
 		}
 		break;
@@ -281,7 +295,7 @@ int main(int argc, const char* argv[])
 		{
 			/* Also handles RET */
 			uint16_t r1 = (instr >> 6) & 0x7; // base register
-			reg[R_PC] = reg[r1];			  // 根据寄存器跳转地址
+			reg[R_PC] = reg[r1];			  // 根据寄存器跳转地址，跳转地址的方式给 R_PC寄存器赋值为要跳转的值
 		}
 		break;
 		case OP_JSR:
@@ -411,7 +425,7 @@ int main(int argc, const char* argv[])
 				fflush(stdout);
 			}
 			break;
-			case TRAP_HALT:
+			case TRAP_HALT://程序结束标志
 				puts("HALT");
 				fflush(stdout);
 				running = 0;
