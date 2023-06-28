@@ -1,1 +1,2 @@
 E:\CodeLibraries\lc3-vm\Vs2019-LC3-VM\Debug\Vs2019-LC3-VM.exe
+E:\CodeLibraries\learn-LC3\LC3-Vm\Vs2019-LC3-VM\Debug\Vs2019-LC3-VM.exe
